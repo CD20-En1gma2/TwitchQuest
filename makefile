@@ -4,16 +4,16 @@ CFLAGS = -std=c++17
 INSTALL_DIR = /usr/local/share
 BIN_DIR = /usr/local/bin
 
-all: customquest
+all: twitchquest
 
 customquest: 
-	${CC} ${CFLAGS} ${SRC} -o customquest
+	${CC} ${CFLAGS} ${SRC} -o twitchquest
 
 install: customquest
-	rm -rf ${INSTALL_DIR}/customquest
-	mkdir -p ${INSTALL_DIR}/customquest
-	cp -rf ./res/* ${INSTALL_DIR}/customquest/
-	chmod 711 customquest
-	cp -rf customquest ${INSTALL_DIR}/customquest/customquest
-	rm -rf ${BIN_DIR}/customquest
-	ln -s ${INSTALL_DIR}/customquest/customquest ${BIN_DIR}/customquest
+	rm -rf ${INSTALL_DIR}/twitchquest
+	mkdir -p ${INSTALL_DIR}/twitchquest
+	cp -rf ./res/* ${INSTALL_DIR}/twitchquest/
+	chmod 711 twitchquest
+	cp -rf twitchquest ${INSTALL_DIR}/twitchquest/twitchquest
+	rm -rf ${BIN_DIR}/twitchquest
+	ln -s ${INSTALL_DIR}/twitchquest/twitchquest ${BIN_DIR}/twitchquest

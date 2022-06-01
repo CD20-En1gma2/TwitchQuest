@@ -180,7 +180,7 @@ int cursor = 1;
 string dialogs[2] = {"line1", "line2"};
 string options[4] = {"Fight", "Moves", "Items", "Run"};
 
-string path = "/usr/local/share/customquest/";
+string path = "/usr/local/share/twitchquest/";
 
 int main()
 {
@@ -196,7 +196,7 @@ void MainMenu()
 {
     char c;
     vector<string> elements;    //contains the availables enemies, heroes or items
-    string types[3] = {"enemies", "heroes", "items"};
+    string types[3] = {"heroes", "items", "enemies"};
 
     for(int i=0;i<3;i++)    //for all the 3 categories, it makes the user select one
     {
@@ -234,13 +234,13 @@ void PrintOptions(vector<string> elements, int type)
     switch(type)
     {
         case 0:
-            cout << "an enemy:";
-            break;
-        case 1:
             cout << "a hero:";
             break;
-        case 2:
+        case 1:
             cout << "an inventory:";
+            break;
+        case 2:
+            cout << "an enemy:";
     }
     cout << endl << "  ╭────────────────────────────╮" << endl;
     for (int k=0; k<elements.size();k++)
@@ -266,7 +266,7 @@ vector<string> GetJSON(string type)
     string s;
     for (const auto & entry : filesystem::directory_iterator(path+type+"/"))
     {
-        s = entry.path().u8string().substr(entry.path().u8string().find(type+"/")+type.length()+1); //removing /usr/local/share/customquest/res/type/
+        s = entry.path().u8string().substr(entry.path().u8string().find(type+"/")+type.length()+1); //removing /usr/local/share/twitchquest/res/type/
         s = s.substr(0, s.length()-5);
         elements.push_back(s);
     }
@@ -279,16 +279,16 @@ void InitEntities(string* entities)
     //initiates the entities and the needed files
     ifstream f;
 
-    f.open(path+"enemies/"+entities[0]+".json");
-    enemy.InitEntity(f);
-    f.close();
-
-    f.open(path+"heroes/"+entities[1]+".json");
+    f.open(path+"heroes/"+entities[0]+".json");
     hero.InitEntity(f);
     f.close();
 
-    f.open(path+"items/"+entities[2]+".json");
+    f.open(path+"items/"+entities[1]+".json");
     inventory.InitInventory(f);
+    f.close();
+
+    f.open(path+"enemies/"+entities[2]+".json");
+    enemy.InitEntity(f);
     f.close();
 
     ifstream t(path+"template");
@@ -546,7 +546,7 @@ void EnemyTurn()
         {   
             k++;
             if(++prob > 3) prob=0;
-        } while (enemy.moves[prob].name=="" && k<=4);   //tires different moves at most 4 times, then if all the moves are "" (the enemy has no moves) it performs basic attac
+        } while (enemy.moves[prob].name=="" && k<=4);   //tires different moves at most 4 times, then if all the moves are "" (the enemy has no moves) it performs basic attack
         if(k<=4 && enemy.mp >= enemy.moves[prob].mpCost && enemy.hp >= enemy.moves[prob].hpCost)    
             enemy.UseMove(prob, &hero); //enemy performs the move only if it has enogh mps and hps
         else    //othervies it does a normal attack

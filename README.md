@@ -1,11 +1,11 @@
-# CustomQuest
+# TwitchQuest
 Modular turn-based-RPG-like battle simulator with JSON configuration files.
 
 ## Description  
 **CustomQuest** is a simple game that lets you battle aganist monsters with a simple RPG-like turn-based mechanic. 
 
 But it's not just that!  
-**CustomQuest** is _modular_, meaning _you_ can create your **characters**, your **enemies**, your **items** and your **movesets** via JSON files.  
+**TwitchQuest** is _modular_, meaning _you_ can create your **characters**, your **enemies**, your **items** and your **movesets** via JSON files.  
 
 Personalize your game with your custom profiles and try out different strategy, all in your terminal! 
 
@@ -15,7 +15,7 @@ https://user-images.githubusercontent.com/61376940/165341488-9e1f27c3-1ce8-411f-
 
 
 ## Installation
-To install **CustomQuest**, run these commands:
+To install **TwitchQuest**, run these commands:
 
 ### Manual
 ```
@@ -27,7 +27,7 @@ sudo make install
 Install directoy: ``/usr/local/share/customquest/``.
 
 ## Controls
-To play **CustomQuest**, just run the command ``customquest``, as simple as that!
+To play **TwitchQuest**, just run the command ``TwitchQuest``, as simple as that!
 
 Use the ``Arrow Keys`` and ``Enter`` to move through the game menus, and, while fighting, go back with ``b``.
 
@@ -57,7 +57,7 @@ Just create a file containing the ASCII Art with the same name as the monster, a
 ### JSON Format
 _Coming soon_
 ### How to add your game profiles
-To add your custom JSON files, you can place them in the ``res/`` folder before running ``sudo make install``, or place them in ``/usr/local/share/customquest/`` if you've already installed **CustomQuest**.
+To add your custom JSON files, you can place them in the ``res/`` folder before running ``sudo make install``, or place them in ``/usr/local/share/TwitchQuest/`` if you've already installed **CustomQuest**.
 
 _I'll add more detailed instructions on how to create and insteall your own game profiels ASAP_
   
